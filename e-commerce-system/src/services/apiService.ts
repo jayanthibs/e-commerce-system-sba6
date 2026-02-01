@@ -1,4 +1,4 @@
-async function fetchApiData(){
+export async function fetchAPIData(){
     try{
 
     const response = await fetch("https://dummyjson.com/products");
@@ -19,4 +19,4 @@ async function fetchApiData(){
     console.log(e);
   }
 }
-fetchApiData();
+fetchAPIData();
