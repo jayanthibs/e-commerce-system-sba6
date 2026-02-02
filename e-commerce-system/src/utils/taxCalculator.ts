@@ -1,4 +1,4 @@
-import { Product } from "../models/Product.ts";
+import { Product } from "../models/Product.js";
 
 export function calculateTax(product: Product): number {
 

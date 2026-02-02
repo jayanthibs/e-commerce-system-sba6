@@ -1,5 +1,5 @@
-import { Product } from "../models/Product.ts";
-import { NetworkError, DataError } from "../utils/errorHandler.ts";
+import { Product } from "../models/Product.js";
+import { NetworkError, DataError } from "../utils/errorHandler.js";
 
  export let products: Product[];
  export async function fetchAPIData(): Promise<void>{

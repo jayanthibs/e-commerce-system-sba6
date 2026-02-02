@@ -1,7 +1,7 @@
-import { Product } from "./models/Product.ts";
-import { fetchAPIData, products } from "./services/apiService.ts";
-import { calculateDiscount } from "./utils/discountCalculator.ts";
-import { calculateTax } from "./utils/taxCalculator.ts";
+import { Product } from "./models/Product.js";
+import { fetchAPIData, products } from "./services/apiService.js";
+import { calculateDiscount } from "./utils/discountCalculator.js";
+import { calculateTax } from "./utils/taxCalculator.js";
 
 async function main(){
 await fetchAPIData();
