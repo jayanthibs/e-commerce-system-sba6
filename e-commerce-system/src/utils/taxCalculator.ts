@@ -3,7 +3,7 @@ import { Product } from "../models/Product.ts";
 export function calculateTax(product: Product): number {
 
   if (product.category === "groceries")
-     return product.price * 0.03;
+     return product.getPriceWithDiscount() * 0.03;
   else 
-    return product.price * 0.0475;
+    return product.getPriceWithDiscount() * 0.0475;
 }

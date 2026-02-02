@@ -1,20 +1,22 @@
+import { Product } from "../models/Product.ts";
 import { NetworkError, DataError } from "../utils/errorHandler.ts";
 
-export async function fetchAPIData(){
+ export let products: Product[];
+ export async function fetchAPIData(): Promise<void>{
     try{
 
-    const response = await fetch("https://dummyjson.com/products");
+    const response: Response = await fetch("https://dummyjson.com/products");
      if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      throw new NetworkError(`HTTP error! Status: ${response.status}`);
     }
     const data = await response.json();
-    console.log(data);
-    const products = data.products;
+    //console.log(data);
+    products = data.products;
 
-    for(let product of products){
-        console.log("id:"+ product.id, "title:"+product.title)
-    }
-    console.log(products.length);
+    // for(let product of products){
+    //     console.log("id:"+ product.id, "title:"+product.title)
+    // }
+    // console.log(products.length);
 
     }
     catch(error) {
@@ -27,4 +29,4 @@ export async function fetchAPIData(){
     }
   }
 }
-fetchAPIData();
+//fetchAPIData();

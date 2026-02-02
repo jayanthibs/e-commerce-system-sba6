@@ -15,13 +15,13 @@ export class Product{
     }
 
     displayDetails(): string{
-         return `Product id: ${this.id} \n title: ${this.title} \n Category: ${this.category} \n Price: ${this.price} \n Discount Percentage: ${this.discountPercentage}`;
+         return `Product id: ${this.id} \ntitle: ${this.title} \nCategory: ${this.category} \nPrice: ${this.price} \nDiscount Percentage: ${this.discountPercentage}`;
 
     }
 
     getPriceWithDiscount(): number{
 
-        return this.price - this.price * this.discountPercentage;
+        return this.price -this.price * (this.discountPercentage/100);
 
     }
 
