@@ -19,7 +19,7 @@ export class Product {
             `Title: ${this.title}`,
             `Category: ${this.category}`,
             `Price: $${this.price}`,
-            `Discount Percentage: ${this.discountPercentage}`
+            `Discount(%): ${this.discountPercentage}`
         ];
     }
     getPriceWithDiscount() {
