@@ -3,6 +3,12 @@ import { fetchAPIData, products } from "./services/apiService.js";
 import { calculateDiscount } from "./utils/discountCalculator.js";
 import { calculateTax } from "./utils/taxCalculator.js";
 import { NetworkError, DataError } from "./utils/errorHandler.js";
+
+const fetchButton = document.getElementById("fetchButton");
+const productList = document.getElementById("productList");
+fetchButton.addEventListener("click", function(event){
+main();
+});
 async function main() {
     try {
         await fetchAPIData();
@@ -20,11 +26,46 @@ async function main() {
     }
     for (const product of products) {
         const item = new Product(product.id, product.title, product.category, product.price, product.discountPercentage);
-        console.log(item.displayDetails());
-        console.log("Price after discount: " + item.getPriceWithDiscount().toFixed(2));
-        console.log("Discounted amount: " + calculateDiscount(item).toFixed(2));
-        console.log("Calculated Tax for the product: " + calculateTax(item).toFixed(2));
-        console.log("--------------------------");
+        const productDetails= item.displayDetails();
+        const priceAfterDiscount = item.getPriceWithDiscount().toFixed(2);
+        const discountedAmount = calculateDiscount(item).toFixed(2);
+        const calculatedTax = calculateTax(item).toFixed(2);
+
+        renderProducts(productDetails, priceAfterDiscount, discountedAmount, calculatedTax);
+        // console.log(productDetails);
+        // console.log("Price after discount: " + item.getPriceWithDiscount().toFixed(2));
+        // console.log("Discounted amount: " + calculateDiscount(item).toFixed(2));
+        // console.log("Calculated Tax for the product: " + calculateTax(item).toFixed(2));
+        // console.log("--------------------------");
     }
 }
-main();
+
+function renderProducts(productDetails, priceAfterDiscount, discountedAmount, calculatedTax){
+
+   const fragment = document.createDocumentFragment();
+
+    productDetails.forEach(detail => {
+    const li = document.createElement("li");
+    li.textContent = detail;
+    fragment.appendChild(li);
+    });
+    // const details = document.createElement("li");
+    // details.textContent = productDetails;
+    // productList.appendChild(details);
+    const discountedPrice = document.createElement("li");
+    discountedPrice.textContent = "Price after discount: " + priceAfterDiscount;
+    fragment.appendChild(discountedPrice);
+
+    const discountAmount = document.createElement("li");
+    discountAmount.textContent = "Discounted amount: " + discountedAmount;
+    fragment.appendChild(discountAmount);
+
+    const tax = document.createElement("li");
+    tax.textContent = "Calculated Tax for the product: " + calculatedTax;
+    fragment.appendChild(tax);
+
+    fragment.appendChild(document.createElement("hr")); // separator
+    productList.appendChild(fragment);
+
+
+}

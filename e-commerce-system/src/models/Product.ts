@@ -1,28 +1,37 @@
 // creating class Product
-export class Product{
-    id: number;
-    title: string;
-    category: string;
-    price: number;
-    discountPercentage: number;
+export class Product {
+  id: number;
+  title: string;
+  category: string;
+  price: number;
+  discountPercentage: number;
 
-    constructor(id:number, title:string, category: string, price: number, discountPercentage: number){
-        this.id = id;
-        this.title = title;
-        this.category = category;
-        this.price = price;
-        this.discountPercentage = discountPercentage;
-    }
+  constructor(
+    id: number,
+    title: string,
+    category: string,
+    price: number,
+    discountPercentage: number,
+  ) {
+    this.id = id;
+    this.title = title;
+    this.category = category;
+    this.price = price;
+    this.discountPercentage = discountPercentage;
+  }
 
-    displayDetails(): string{
-         return `Product id: ${this.id} \ntitle: ${this.title} \nCategory: ${this.category} \nPrice: ${this.price} \nDiscount Percentage: ${this.discountPercentage}`;
+  displayDetails(): string[] {
+    // return `Product id: ${this.id} \ntitle: ${this.title} \nCategory: ${this.category} \nPrice: ${this.price} \nDiscount Percentage: ${this.discountPercentage}`;
+    return [
+      `ID: ${this.id}`,
+      `Title: ${this.title}`,
+      `Category: ${this.category}`,
+      `Price: $${this.price}`,
+      `Discount Percentage: ${this.discountPercentage}`
+    ];
+  }
 
-    }
-
-    getPriceWithDiscount(): number{
-
-        return this.price -this.price * (this.discountPercentage/100);
-
-    }
-
+  getPriceWithDiscount(): number {
+    return this.price - this.price * (this.discountPercentage / 100);
+  }
 }
